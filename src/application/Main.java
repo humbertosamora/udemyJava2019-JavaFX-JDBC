@@ -1,23 +1,63 @@
 package application;
-	
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
+
+import db.DB;
+import db.DBException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.stage.Stage;
 
 public class Main extends Application {
+	
+	private static Scene mainScene;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
+			ScrollPane scrollPane = loader.load();
+			scrollPane.setFitToHeight(true);
+			scrollPane.setFitToWidth(true);
+			
+			mainScene = new Scene(scrollPane);
+			primaryStage.setScene(mainScene);
+			primaryStage.setTitle("Sample JavaFX application");
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void init() throws Exception {
+		super.init();
+		try {
+			DB.getConnection("D:\\Users\\Samurai\\Documents\\JAVA\\eclipse-jee\\coursejdbc.properties");
+		}
+		catch(DBException e){
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@Override
+	public void stop() throws Exception {
+		try {
+			DB.closeConnection();
+		}
+		catch(DBException e){
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static Scene getMainScene() {
+		return mainScene;
+	}
+	
+	public static void setMainScene(Scene mainScene) {
+		Main.mainScene = mainScene;
 	}
 	
 	public static void main(String[] args) {
