@@ -41,7 +41,7 @@ public class Department {
 	public int hashCode() {
 		return Objects.hash(name);
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

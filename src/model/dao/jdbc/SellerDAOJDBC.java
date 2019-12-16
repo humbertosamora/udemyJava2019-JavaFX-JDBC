@@ -187,9 +187,9 @@ public class SellerDAOJDBC implements SellerDAO {
 		}
 		
 		int rowsAffected = 0;
-		Seller s = findByName(seller.getName());
+		Seller s = findById(seller.getId());
 		
-		if (s!=null && s.equals(seller)) {
+		if (s!=null && !s.equals(seller)) {
 			
 			seller.setId(s.getId());
 			

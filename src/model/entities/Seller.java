@@ -83,10 +83,10 @@ public class Seller {
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", baseSalary=" + nf.format(baseSalary)
 				+ ", birthdate=" + sdf.format(birthdate) + ", " + department + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(birthdate, name);
+		return Objects.hash(baseSalary, birthdate, department, email, name);
 	}
 	
 	@Override
@@ -98,7 +98,9 @@ public class Seller {
 			return false;
 		}
 		Seller other = (Seller) obj;
-		return Objects.equals(birthdate, other.birthdate) && Objects.equals(name, other.name);
+		return Objects.equals(baseSalary, other.baseSalary) && Objects.equals(birthdate, other.birthdate)
+				&& Objects.equals(department, other.department) && Objects.equals(email, other.email)
+				&& Objects.equals(name, other.name);
 	}
-		
+	
 }
