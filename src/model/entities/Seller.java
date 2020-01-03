@@ -2,7 +2,7 @@ package model.entities;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Seller {
@@ -11,7 +11,7 @@ public class Seller {
 	private String name;
 	private String email;
 	private Double baseSalary;
-	private Date birthdate;
+	private LocalDate birthdate;
 	private Department department;
 	
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -21,7 +21,7 @@ public class Seller {
 		
 	}
 
-	public Seller(Integer id, String name, String email, Double baseSalary, Date birthdate, Department department) {
+	public Seller(Integer id, String name, String email, Double baseSalary, LocalDate birthdate, Department department) {
 		this.id = id;
 		this.name = name.toUpperCase();
 		this.email = email.toUpperCase();
@@ -62,11 +62,11 @@ public class Seller {
 		this.baseSalary = baseSalary;
 	}
 	
-	public Date getBirthdate() {
+	public LocalDate getBirthdate() {
 		return birthdate;
 	}
 	
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
 	

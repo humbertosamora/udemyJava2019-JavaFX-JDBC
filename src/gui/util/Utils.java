@@ -1,9 +1,7 @@
 package gui.util;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 
 import javafx.event.ActionEvent;
@@ -41,18 +39,18 @@ public class Utils {
 		}
 	}
 	
-	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
+	public static <T> void formatTableColumnDate(TableColumn<T, LocalDate> tableColumn, String format) {
 		tableColumn.setCellFactory(column -> {
-			TableCell<T, Date> cell = new TableCell<T, Date>() {
-				private SimpleDateFormat sdf = new SimpleDateFormat(format);
+			TableCell<T, LocalDate> cell = new TableCell<T, LocalDate>() {
+				private DateTimeFormatter fmt = DateTimeFormatter.ofPattern(format);
 
 				@Override
-				protected void updateItem(Date item, boolean empty) {
+				protected void updateItem(LocalDate item, boolean empty) {
 					super.updateItem(item, empty);
 					if (empty) {
 						setText(null);
 					} else {
-						setText(sdf.format(item));
+						setText(fmt.format(item));
 					}
 				}
 			};

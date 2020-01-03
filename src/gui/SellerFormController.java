@@ -1,11 +1,7 @@
 package gui;
 
 import java.net.URL;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -165,7 +161,7 @@ public class SellerFormController implements Initializable {
 		txtBaseSalary.setText(String.format("%.2f", entity.getBaseSalary()));
 		
 		if (entity.getBirthdate() != null) {
-			dpBirthDate.setValue(LocalDateTime.ofInstant(entity.getBirthdate().toInstant(), ZoneId.systemDefault()).toLocalDate());
+			dpBirthDate.setValue(entity.getBirthdate());
 		}
 		
 		if (entity.getDepartment() != null) {
@@ -197,8 +193,7 @@ public class SellerFormController implements Initializable {
 		if(dpBirthDate.getValue() == null) {
 			e.addError("birthdate", "Field can't be empty.");
 		} else {
-			Instant instant = Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
-			obj.setBirthdate(Date.from(instant));
+			obj.setBirthdate(dpBirthDate.getValue());
 		}
 		
 		if(txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().equals("")) {

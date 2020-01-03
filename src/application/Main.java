@@ -35,7 +35,7 @@ public class Main extends Application {
 	public void init() throws Exception {
 		super.init();
 		try {
-			DB.getConnection("D:\\Users\\Samurai\\Documents\\JAVA\\eclipse-jee\\coursejdbc.properties");
+			DB.getConnection("coursejdbc.properties");
 		}
 		catch(DBException e){
 			System.out.println(e.getMessage());

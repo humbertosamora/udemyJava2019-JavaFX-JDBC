@@ -3,7 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.security.InvalidParameterException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -55,7 +55,7 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private TableColumn<Seller, Double> tableColumnBaseSalary;
 	
 	@FXML
-	private TableColumn<Seller, Date> tableColumnBirthDate;
+	private TableColumn<Seller, LocalDate> tableColumnBirthDate;
 	
 	@FXML
 	private TableColumn<Seller, Seller> tableColumnEdit;
